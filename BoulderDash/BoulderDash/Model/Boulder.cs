@@ -1,8 +1,11 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
-    internal class Boulder : IGameObject
+    internal class Boulder : LooseObject
     {
-        public char GetSymbol()
+
+        public override char GetSymbol()
         {
             return 'B';
         }

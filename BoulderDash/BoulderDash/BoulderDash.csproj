@@ -48,12 +48,15 @@
     <Compile Include="Model\Exit.cs" />
     <Compile Include="Model\FireFly.cs" />
     <Compile Include="Model\HardenedMud.cs" />
-    <Compile Include="Model\Interfaces\IGameObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\IGameObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\LooseObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\MoveableObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\NonMoveableObject.cs" />
     <Compile Include="Model\LevelData.cs" />
     <Compile Include="Model\Maze.cs" />
     <Compile Include="Model\Mud.cs" />
-    <Compile Include="Model\Parser.cs" />
-    <Compile Include="Model\Program.cs" />
+    <Compile Include="Controller\Parser.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Rockford.cs" />
     <Compile Include="Model\SteelWall.cs" />
@@ -66,8 +69,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

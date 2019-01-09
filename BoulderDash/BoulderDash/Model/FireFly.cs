@@ -1,8 +1,10 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
-    internal class FireFly : IGameObject
+    internal class FireFly : MoveableObject
     {
-        public char GetSymbol()
+        public override char GetSymbol()
         {
             return 'F';
         }

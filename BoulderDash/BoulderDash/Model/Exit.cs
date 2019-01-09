@@ -1,8 +1,10 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
-    internal class Exit : IGameObject
+    internal class Exit : NonMoveableObject
     {
-        public char GetSymbol()
+        public override char GetSymbol()
         {
             return 'E';
         }

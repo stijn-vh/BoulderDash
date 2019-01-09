@@ -1,8 +1,10 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
-    internal class Rockford : IGameObject
+    internal class Rockford : MoveableObject
     {
-        public char GetSymbol()
+        public override char GetSymbol()
         {
             return 'R';
         }

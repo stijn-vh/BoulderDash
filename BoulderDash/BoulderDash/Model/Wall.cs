@@ -1,8 +1,10 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
-    internal class Wall : IGameObject
+    internal class Wall : NonMoveableObject
     {
-        public char GetSymbol()
+        public override char GetSymbol()
         {
             return 'W';
         }
