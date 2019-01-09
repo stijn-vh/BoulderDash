@@ -14,7 +14,7 @@ namespace BoulderDash.View
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("| Welkom bij BoulderDash!      |   Doel van het spel     |");
             Console.WriteLine("| Betekenis van de symbolen    |                         |");
-            Console.WriteLine("|                              |   Verzamel all          |");
+            Console.WriteLine("|                              |   Verzamel alle          |");
             Console.WriteLine("| Spatie: Outerspace           |   Diamanten en          |");
             Console.WriteLine("|      #: Muur                 |   Bereik de exit!       |");
             Console.WriteLine("|      .: Vloer                |                         |");

@@ -4,7 +4,6 @@
     {
         public char GetSymbol()
         {
-            jabsfl
             return 'E';
         }
     }
