@@ -1,9 +1,12 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
     public class Parser : LevelData
     {
         private char[,] levelArray;
         private Tile[,] tileArray;
+        private MoveableObject player;
 
         public void GenerateTilesWithContent()
         {
@@ -17,24 +20,13 @@
             }
         }
 
-        public void PrintChar(Tile tile) // TODO Haal uit parser en gooi in output view!!!!!!!!!!!
-        {
-            try
-            {
-                System.Console.Write(tile.TileContent.GetSymbol());
-            }
-            catch
-            {
-                System.Console.Write(" ");
-            }
-        }
-
         public IGameObject CreateTileContent(char symbol)
         {
             switch (symbol)
             {
                 case 'R':
-                    return new Rockford();
+                    player = new Rockford();
+                    return player;
                 case 'M':
                     return new Mud();
                 case 'B':
@@ -57,7 +49,7 @@
             return null;
         }
 
-        public Tile ReadFile(int level)
+        public Maze ReadFile(int level)
         {
             switch (level)
             {
@@ -114,7 +106,8 @@
                     }
                 }
             }
-            return first;
+            Maze maze = new Maze(first, player);
+            return maze;
         }
     }
 }

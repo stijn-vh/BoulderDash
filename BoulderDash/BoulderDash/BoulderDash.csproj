@@ -43,26 +43,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boulder.cs" />
-    <Compile Include="Diamond.cs" />
-    <Compile Include="Exit.cs" />
-    <Compile Include="FireFly.cs" />
-    <Compile Include="HardenedMud.cs" />
-    <Compile Include="IGameObject.cs" />
-    <Compile Include="LevelData.cs" />
-    <Compile Include="Maze.cs" />
-    <Compile Include="Mud.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Model\Boulder.cs" />
+    <Compile Include="Model\Diamond.cs" />
+    <Compile Include="Model\Exit.cs" />
+    <Compile Include="Model\FireFly.cs" />
+    <Compile Include="Model\HardenedMud.cs" />
+    <Compile Include="Model\Interfaces-Abstract\Direction.cs" />
+    <Compile Include="Model\Interfaces-Abstract\IGameObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\LooseObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\MoveableObject.cs" />
+    <Compile Include="Model\Interfaces-Abstract\NonMoveableObject.cs" />
+    <Compile Include="Model\LevelData.cs" />
+    <Compile Include="Model\Maze.cs" />
+    <Compile Include="Model\Mud.cs" />
+    <Compile Include="Controller\Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rockford.cs" />
-    <Compile Include="SteelWall.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="TNT.cs" />
-    <Compile Include="Wall.cs" />
+    <Compile Include="Model\Rockford.cs" />
+    <Compile Include="Model\SteelWall.cs" />
+    <Compile Include="Model\Tile.cs" />
+    <Compile Include="Model\TNT.cs" />
+    <Compile Include="Model\Wall.cs" />
+    <Compile Include="View\InputView.cs" />
+    <Compile Include="View\OutputView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

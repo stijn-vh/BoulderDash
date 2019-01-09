@@ -5,6 +5,10 @@
         public Tile(IGameObject content)
         {
             TileContent = content;
+            if (content != null) // Als de tile niet leeg is
+            {
+                TileContent.CurrentTile = this;
+            }
         }
 
         public IGameObject TileContent { get; set; }
