@@ -14,15 +14,31 @@ namespace BoulderDash.View
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("| Welkom bij BoulderDash!      |   Doel van het spel     |");
             Console.WriteLine("| Betekenis van de symbolen    |                         |");
-            Console.WriteLine("|                              |   Verzamel alle          |");
+            Console.WriteLine("|                              |   Verzamel alle         |");
             Console.WriteLine("| Spatie: Outerspace           |   Diamanten en          |");
-            Console.WriteLine("|      #: Muur                 |   Bereik de exit!       |");
-            Console.WriteLine("|      .: Vloer                |                         |");
-            Console.WriteLine("|      O: Krat                 |                         |");
-            Console.WriteLine("|      0: Krat op bestemming   |                         |");
-            Console.WriteLine("|      x: Bestemming           |                         |");
-            Console.WriteLine("|      @: Speler               |                         |");
+            Console.WriteLine("|      S : SteelWall           |   Bereik de exit!       |");
+            Console.WriteLine("|      R : Rockford            |                         |");
+            Console.WriteLine("|      W : Wall                |   Elke diamant          |");
+            Console.WriteLine("|      M : Mud                 |   Is 10 punten          |");
+            Console.WriteLine("|      B : Boulder             |   Waard!                |");
+            Console.WriteLine("|      D : Diamond             |                         |");
+            Console.WriteLine("|      F : Firefly             |                         |");
+            Console.WriteLine("|      E : Exit                |                         |");
+            Console.WriteLine("|      H : Hardened mud        |                         |");
+            Console.WriteLine("|      T : TNT                 |                         |");
             Console.WriteLine("----------------------------------------------------------");
+        }
+
+        public void PrintChar(Tile tile)
+        {
+            try
+            {
+                System.Console.Write(tile.TileContent.GetSymbol());
+            }
+            catch
+            {
+                System.Console.Write(" ");
+            }
         }
     }
 }

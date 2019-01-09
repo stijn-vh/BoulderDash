@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash.View;
+using System;
 
 namespace BoulderDash
 {
@@ -9,14 +10,15 @@ namespace BoulderDash
             Parser p = new Parser();
             Console.Clear();
             Tile current = p.ReadFile(3);
+            OutputView o = new OutputView();
             while (current.Down != null) // Loop down the list
             {
                 while (current.Right != null) // Loop to the last item
                 {
-                    p.PrintChar(current);
+                    o.PrintChar(current);
                     current = current.Right;
                 }
-                p.PrintChar(current);
+                o.PrintChar(current);
                 while (current.Left != null) // Loop back to begin
                 {
                     current = current.Left;
@@ -26,10 +28,10 @@ namespace BoulderDash
             }
             while (current.Right != null) // Loop to the last item
             {
-                p.PrintChar(current);
+                o.PrintChar(current);
                 current = current.Right;
             }
-            p.PrintChar(current);
+            o.PrintChar(current);
             Console.ReadLine();
         }
     }

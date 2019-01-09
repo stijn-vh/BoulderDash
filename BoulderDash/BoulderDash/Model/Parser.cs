@@ -17,18 +17,6 @@
             }
         }
 
-        public void PrintChar(Tile tile) // TODO Haal uit parser en gooi in output view!!!!!!!!!!!
-        {
-            try
-            {
-                System.Console.Write(tile.TileContent.GetSymbol());
-            }
-            catch
-            {
-                System.Console.Write(" ");
-            }
-        }
-
         public IGameObject CreateTileContent(char symbol)
         {
             switch (symbol)
