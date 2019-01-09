@@ -1,4 +1,5 @@
-﻿using BoulderDash.View;
+﻿using BoulderDash.Controller;
+using BoulderDash.View;
 using System;
 
 namespace BoulderDash
@@ -7,8 +8,7 @@ namespace BoulderDash
     {
         static void Main(string[] args)
         {
-            OutputView o = new OutputView();
-            o.PrintMaze();
+            GameController gc = new GameController();
         }
     }
 }

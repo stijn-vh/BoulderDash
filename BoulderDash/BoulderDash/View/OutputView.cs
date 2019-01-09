@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoulderDash.View
 {
@@ -31,30 +27,28 @@ namespace BoulderDash.View
 
         public void PrintChar(Tile tile)
         {
-            try
+            if(tile.TileContent != null)
             {
                 System.Console.Write(tile.TileContent.GetSymbol());
             }
-            catch
+            else
             {
                 System.Console.Write(" ");
             }
         }
 
-        public void PrintMaze()
+        public void PrintMaze(Tile first)
         {
-            Parser p = new Parser();
             Console.Clear();
-            Tile current = p.ReadFile(3);
-            OutputView o = new OutputView();
+            Tile current = first;
             while (current.Down != null) // Loop down the list
             {
                 while (current.Right != null) // Loop to the last item
                 {
-                    o.PrintChar(current);
+                    PrintChar(current);
                     current = current.Right;
                 }
-                o.PrintChar(current);
+                PrintChar(current);
                 while (current.Left != null) // Loop back to begin
                 {
                     current = current.Left;
@@ -64,11 +58,10 @@ namespace BoulderDash.View
             }
             while (current.Right != null) // Loop to the last item
             {
-                o.PrintChar(current);
+                PrintChar(current);
                 current = current.Right;
             }
-            o.PrintChar(current);
-            Console.ReadLine();
+            PrintChar(current);
         }
     }
 }

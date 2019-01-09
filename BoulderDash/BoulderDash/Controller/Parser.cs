@@ -1,9 +1,12 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
     public class Parser : LevelData
     {
         private char[,] levelArray;
         private Tile[,] tileArray;
+        private MoveableObject player;
 
         public void GenerateTilesWithContent()
         {
@@ -22,7 +25,8 @@
             switch (symbol)
             {
                 case 'R':
-                    return new Rockford();
+                    player = new Rockford();
+                    return player;
                 case 'M':
                     return new Mud();
                 case 'B':
@@ -45,7 +49,7 @@
             return null;
         }
 
-        public Tile ReadFile(int level)
+        public Maze ReadFile(int level)
         {
             switch (level)
             {
@@ -102,7 +106,8 @@
                     }
                 }
             }
-            return first;
+            Maze maze = new Maze(first, player);
+            return maze;
         }
     }
 }

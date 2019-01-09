@@ -4,6 +4,7 @@ namespace BoulderDash
 {
     internal class FireFly : MoveableObject
     {
+
         public override char GetSymbol()
         {
             return 'F';

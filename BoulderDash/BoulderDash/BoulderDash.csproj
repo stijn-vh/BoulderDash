@@ -43,11 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\GameController.cs" />
     <Compile Include="Model\Boulder.cs" />
     <Compile Include="Model\Diamond.cs" />
     <Compile Include="Model\Exit.cs" />
     <Compile Include="Model\FireFly.cs" />
     <Compile Include="Model\HardenedMud.cs" />
+    <Compile Include="Model\Interfaces-Abstract\Direction.cs" />
     <Compile Include="Model\Interfaces-Abstract\IGameObject.cs" />
     <Compile Include="Model\Interfaces-Abstract\LooseObject.cs" />
     <Compile Include="Model\Interfaces-Abstract\MoveableObject.cs" />
