@@ -12,13 +12,20 @@ namespace BoulderDash.Controller
     {
         private Maze _maze;
         private OutputView _outputView;
+        private InputView _inputView;
         public GameController()
         {
             _outputView = new OutputView();
+            _inputView = new InputView();
             Parser p = new Parser();
-            _maze = p.ReadFile(1);
+            _maze = p.ReadFile(AskLevel());
             _outputView.PrintMaze(_maze.FirstTile); // TODO Get first tile from Maze-Model
             WaitForMove();
+        }
+
+        public int AskLevel()
+        {
+            return _inputView.ReadLevel();
         }
 
         public void WaitForMove()
