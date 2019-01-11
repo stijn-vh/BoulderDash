@@ -1,10 +1,5 @@
 ﻿using BoulderDash.Model.Interfaces_Abstract;
 using BoulderDash.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoulderDash.Controller
 {
@@ -19,7 +14,7 @@ namespace BoulderDash.Controller
             _inputView = new InputView();
             Parser p = new Parser();
             _maze = p.ReadFile(AskLevel());
-            _outputView.PrintMaze(_maze.FirstTile); // TODO Get first tile from Maze-Model
+            _outputView.PrintMaze(_maze.FirstTile);
             WaitForMove();
         }
 
@@ -32,12 +27,18 @@ namespace BoulderDash.Controller
         {
             while (true)
             {
-                System.Console.WriteLine("");
-                System.Console.WriteLine("Input Direction:");
-                int dirInput = Int32.Parse(System.Console.ReadLine());
+                int dirInput = _inputView.WaitForInput();
                 _maze.Player.Move((Direction)dirInput);
+                LetLooseObjectsFall();
                 _outputView.PrintMaze(_maze.FirstTile);
+                _outputView.PrintScore((_maze.CountDiamondsCollected() * 10));
+                _maze.CheckIfPlayerIsAlive();
             }
+        }
+
+        public void LetLooseObjectsFall()
+        {
+            _maze.LetLooseObjectFall();
         }
     }
 }

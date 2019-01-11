@@ -65,5 +65,14 @@ namespace BoulderDash.View
             }
             PrintChar(current);
         }
+
+        public void PrintScore(int score)
+        {
+            System.Console.WriteLine("");
+            System.Console.WriteLine("");
+
+            System.Console.ForegroundColor = ConsoleColor.Cyan;
+            System.Console.WriteLine("Score: " + score);
+        }
     }
 }

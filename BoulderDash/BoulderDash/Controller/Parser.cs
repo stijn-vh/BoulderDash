@@ -7,6 +7,7 @@ namespace BoulderDash
         private char[,] levelArray;
         private Tile[,] tileArray;
         private MoveableObject player;
+        private int amountOfDiamonds;
 
         public void GenerateTilesWithContent()
         {
@@ -32,6 +33,7 @@ namespace BoulderDash
                 case 'B':
                     return new Boulder();
                 case 'D':
+                    amountOfDiamonds++;
                     return new Diamond();
                 case 'W':
                     return new Wall();
@@ -106,7 +108,7 @@ namespace BoulderDash
                     }
                 }
             }
-            Maze maze = new Maze(first, player);
+            Maze maze = new Maze(first, player, amountOfDiamonds);
             return maze;
         }
     }

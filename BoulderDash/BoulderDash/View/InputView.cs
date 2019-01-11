@@ -10,6 +10,12 @@ namespace BoulderDash.View
         public InputView()
         {
         }
+
+        public int WaitForInput()
+        {
+            return (int)Console.ReadKey().Key;
+        }
+
         public int ReadLevel()
         {
             Console.WriteLine("Kies een level (1-3)");

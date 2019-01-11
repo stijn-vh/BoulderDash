@@ -1,4 +1,6 @@
-﻿namespace BoulderDash
+﻿using BoulderDash.Model.Interfaces_Abstract;
+
+namespace BoulderDash
 {
     public class Tile
     {
@@ -17,5 +19,16 @@
         public Tile Down { get; set; }
         public Tile Left { get; set; }
 
+        public bool CanMoveOnTile(Direction direction)
+        {
+            if (TileContent != null)
+            {
+                return TileContent.Trigger(direction);
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

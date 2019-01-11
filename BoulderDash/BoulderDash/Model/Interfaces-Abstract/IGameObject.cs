@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash.Model.Interfaces_Abstract;
+using System;
 
 namespace BoulderDash
 {
@@ -7,5 +8,8 @@ namespace BoulderDash
         Tile CurrentTile { get; set; }
         char GetSymbol();
         ConsoleColor GetColor();
+        bool Trigger(Direction dir);
+        void Move(Direction dir);
+        IGameObject Fall();
     }
 }

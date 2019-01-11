@@ -14,5 +14,10 @@ namespace BoulderDash
         {
             return 'M';
         }
+
+        public override bool Trigger(Direction dir)
+        {
+            return true;
+        }
     }
 }
