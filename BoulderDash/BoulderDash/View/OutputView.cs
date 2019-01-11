@@ -27,12 +27,14 @@ namespace BoulderDash.View
 
         public void PrintChar(Tile tile)
         {
-            if(tile.TileContent != null)
+            if (tile.TileContent != null)
             {
+                System.Console.ForegroundColor = tile.TileContent.GetColor();
                 System.Console.Write(tile.TileContent.GetSymbol());
             }
             else
             {
+                System.Console.ForegroundColor = ConsoleColor.Black;
                 System.Console.Write(" ");
             }
         }
