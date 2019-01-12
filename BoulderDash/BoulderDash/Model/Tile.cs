@@ -21,13 +21,37 @@ namespace BoulderDash
 
         public bool CanMoveOnTile(Direction direction)
         {
-            if (TileContent != null)
+            if(TileContent is Diamond)
+            {
+                return true;
+            }
+            else if (TileContent != null)
             {
                 return TileContent.Trigger(direction);
             }
             else
             {
                 return true;
+            }
+        }
+
+        public void ExplodeContent()
+        {
+            if (TileContent != null)
+            {
+                TileContent.Destroy();
+            }
+        }
+
+        public bool DoesTileContentStick()
+        {
+            if (TileContent != null)
+            {
+                return TileContent.Sticks;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -3,8 +3,13 @@ using System;
 
 namespace BoulderDash
 {
-    internal class Exit : NonMoveableObject
+    public class Exit : NonMoveableObject
     {
+        public bool CanExit { get; set; }
+        public Exit()
+        {
+            CanExit = false;
+        }
         public override ConsoleColor GetColor()
         {
             return ConsoleColor.DarkYellow;
@@ -13,6 +18,11 @@ namespace BoulderDash
         public override char GetSymbol()
         {
             return 'E';
+        }
+
+        public override bool Trigger(Direction dir)
+        {
+            return CanExit;
         }
     }
 }

@@ -7,47 +7,51 @@ namespace BoulderDash
     {
         private int _originalAmountOfDiamonds;
         private List<IGameObject> _fallenObjects;
-        public Maze(Tile firstTile, MoveableObject player, int originalAmountOfDiamonds)
+        public Maze(Tile firstTile, MoveableObject player, List<FireFly> fireFlies, int originalAmountOfDiamonds, Exit exit)
         {
             _originalAmountOfDiamonds = originalAmountOfDiamonds;
             FirstTile = firstTile;
             Player = player;
+            Exit = exit;
+            FireFlies = fireFlies;
         }
         public Tile FirstTile { get; set; }
+        public Exit Exit { get; set; }
         public MoveableObject Player { get; set; }
+        public List<FireFly> FireFlies { get; set; }
+        public int DiamondsCollected { get => Player.AmountOfDiamondsCollected; }
+        public int AmountOfFireFliesKilled { get; set; }
 
-        public int CountDiamondsCollected()
+        internal void MoveFireFlies()
         {
-            int amountOfDiamonds = 0;
-            Tile current = FirstTile;
-            while (current.Down != null) // Loop down the list
+            foreach (var f in FireFlies)
             {
-                while (current.Right != null) // Loop to the last item
-                {
-                    amountOfDiamonds += HasDiamond(current);
-                    current = current.Right;
-                }
-                amountOfDiamonds += HasDiamond(current);
-                while (current.Left != null) // Loop back to begin
-                {
-                    current = current.Left;
-                }
-                current = current.Down;
+                f.CalculateMove();
             }
-            while (current.Right != null) // Loop to the last item
+        }
+
+        public void CheckIfFireFliesDied()
+        {
+            foreach (var f in FireFlies.ToArray())
             {
-                amountOfDiamonds += HasDiamond(current);
-                current = current.Right;
+                if (f.CurrentTile.TileContent != f)
+                {
+                    AmountOfFireFliesKilled++;
+                    FireFlies.Remove(f);
+                }
             }
-            amountOfDiamonds += HasDiamond(current);
-            return (_originalAmountOfDiamonds - amountOfDiamonds);
         }
 
         public bool CheckIfPlayerIsAlive()
         {
             if (Player.CurrentTile.TileContent != Player)
             {
-                System.Console.WriteLine("dooooooooooood");
+                if (Player.CurrentTile.TileContent is Diamond)
+                {
+                    Player.CurrentTile.TileContent = Player;
+                    Player.AmountOfDiamondsCollected++;
+                    return true;
+                }
                 return false;
             }
             else
@@ -56,17 +60,29 @@ namespace BoulderDash
             }
         }
 
-        private int HasDiamond(Tile tile)
+        public void ExplodeAllTNT()
         {
-            if (tile.TileContent != null)
+            Tile current = FirstTile;
+            while (current.Down != null) // Loop down the list
             {
-                Diamond checkDiamond = new Diamond();
-                if (tile.TileContent.GetSymbol().Equals(checkDiamond.GetSymbol()))
+                while (current.Right != null) // Loop to the last item
                 {
-                    return 1;
+                    LetTileConentExplode(current);
+                    current = current.Right;
                 }
+                LetTileConentExplode(current);
+                while (current.Left != null) // Loop back to begin
+                {
+                    current = current.Left;
+                }
+                current = current.Down;
             }
-            return 0;
+            while (current.Right != null) // Loop to the last item
+            {
+                LetTileConentExplode(current);
+                current = current.Right;
+            }
+            LetTileConentExplode(current);
         }
 
         public void LetLooseObjectFall()
@@ -104,6 +120,31 @@ namespace BoulderDash
                 {
                     _fallenObjects.Add(currentObject);
                 }
+            }
+        }
+
+        public void LetTileConentExplode(Tile tile)
+        {
+            if (tile.TileContent != null)
+            {
+                tile.TileContent.Explode();
+            }
+        }
+
+        public bool ExitGame()
+        {
+            if (Exit != null && Exit.CurrentTile.TileContent is Rockford)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void CollectedAllDiamonds()
+        {
+            if (_originalAmountOfDiamonds == Player.AmountOfDiamondsCollected && Exit != null)
+            {
+                Exit.CanExit = true;
             }
         }
     }

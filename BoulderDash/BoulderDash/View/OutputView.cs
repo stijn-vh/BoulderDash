@@ -25,6 +25,12 @@ namespace BoulderDash.View
             Console.WriteLine("----------------------------------------------------------");
         }
 
+        internal void GameOver()
+        {
+            System.Console.Clear();
+            System.Console.WriteLine("Game Over!");
+        }
+
         public void PrintChar(Tile tile)
         {
             if (tile.TileContent != null)
@@ -37,6 +43,13 @@ namespace BoulderDash.View
                 System.Console.ForegroundColor = ConsoleColor.Black;
                 System.Console.Write(" ");
             }
+        }
+
+        public void PrintTime(int time)
+        {
+            System.Console.WriteLine("");
+            System.Console.ForegroundColor = System.ConsoleColor.DarkCyan;
+            System.Console.WriteLine("Time left: " + time);
         }
 
         public void PrintMaze(Tile first)

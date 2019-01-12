@@ -1,4 +1,5 @@
 ﻿using BoulderDash.Model.Interfaces_Abstract;
+using System.Collections.Generic;
 
 namespace BoulderDash
 {
@@ -7,6 +8,8 @@ namespace BoulderDash
         private char[,] levelArray;
         private Tile[,] tileArray;
         private MoveableObject player;
+        private List<FireFly> _fireFlies;
+        private Exit _exit;
         private int amountOfDiamonds;
 
         public void GenerateTilesWithContent()
@@ -40,9 +43,12 @@ namespace BoulderDash
                 case 'S':
                     return new SteelWall();
                 case 'F':
-                    return new FireFly();
+                    FireFly f = new FireFly();
+                    _fireFlies.Add(f);
+                    return f;
                 case 'E':
-                    return new Exit();
+                    _exit = new Exit();
+                    return _exit;
                 case 'H':
                     return new HardenedMud();
                 case 'T':
@@ -53,6 +59,7 @@ namespace BoulderDash
 
         public Maze ReadFile(int level)
         {
+            _fireFlies = new List<FireFly>();
             switch (level)
             {
                 case 1:
@@ -108,7 +115,7 @@ namespace BoulderDash
                     }
                 }
             }
-            Maze maze = new Maze(first, player, amountOfDiamonds);
+            Maze maze = new Maze(first, player, _fireFlies, amountOfDiamonds, _exit);
             return maze;
         }
     }

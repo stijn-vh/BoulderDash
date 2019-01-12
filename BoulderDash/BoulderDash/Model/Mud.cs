@@ -5,6 +5,7 @@ namespace BoulderDash
 {
     internal class Mud : NonMoveableObject
     {
+        public override bool Sticks => true;
         public override ConsoleColor GetColor()
         {
             return ConsoleColor.Magenta;

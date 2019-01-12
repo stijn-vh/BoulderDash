@@ -14,5 +14,10 @@ namespace BoulderDash
         {
             return 'S';
         }
+
+        public override void Destroy()
+        {
+
+        }
     }
 }

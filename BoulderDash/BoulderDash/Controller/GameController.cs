@@ -8,6 +8,8 @@ namespace BoulderDash.Controller
         private Maze _maze;
         private OutputView _outputView;
         private InputView _inputView;
+        private static int _timer = 150;
+        private int _tick = 0;
         public GameController()
         {
             _outputView = new OutputView();
@@ -27,18 +29,59 @@ namespace BoulderDash.Controller
         {
             while (true)
             {
-                int dirInput = _inputView.WaitForInput();
-                _maze.Player.Move((Direction)dirInput);
-                LetLooseObjectsFall();
+                _maze.CollectedAllDiamonds();
+                DoEveryTick();
+
+                if (_tick == 2)
+                {
+                    LetLooseObjectsFall();
+                    _timer--;
+                    _tick = 0;
+                }
+                else
+                {
+                    _tick++;
+                }
+
+                if (_timer == 120)
+                {
+                    _maze.ExplodeAllTNT();
+                };
+
+                _maze.ExitGame();
+
+                _maze.CheckIfFireFliesDied();
+
+                if (!_maze.CheckIfPlayerIsAlive())
+                {
+                    _outputView.GameOver();
+                    _outputView.PrintScore((_maze.DiamondsCollected * 10) + (_timer * 10) + (_maze.AmountOfFireFliesKilled * 250));
+                    break;
+                }
+
                 _outputView.PrintMaze(_maze.FirstTile);
-                _outputView.PrintScore((_maze.CountDiamondsCollected() * 10));
-                _maze.CheckIfPlayerIsAlive();
+                _outputView.PrintScore((_maze.DiamondsCollected * 10) + (_maze.AmountOfFireFliesKilled * 250));
+                _outputView.PrintTime(_timer);
+
             }
+            System.Console.ReadLine();
+        }
+
+        public void DoEveryTick()
+        {
+            int dirInput = _inputView.WaitForInput();
+            _maze.Player.Move((Direction)dirInput);
+            MoveFireFlies();
         }
 
         public void LetLooseObjectsFall()
         {
             _maze.LetLooseObjectFall();
+        }
+
+        public void MoveFireFlies()
+        {
+            _maze.MoveFireFlies();
         }
     }
 }
