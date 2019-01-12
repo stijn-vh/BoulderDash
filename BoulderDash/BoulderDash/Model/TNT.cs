@@ -15,6 +15,11 @@ namespace BoulderDash
             return 'T';
         }
 
+        public override void Collect(Direction dir)
+        {
+            base.Collect(dir);
+        }
+
         public override IGameObject Fall()
         {
             if (CurrentTile.Down.TileContent != null && _isFalling)

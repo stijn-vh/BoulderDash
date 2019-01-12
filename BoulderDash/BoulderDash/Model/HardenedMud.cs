@@ -40,7 +40,7 @@ namespace BoulderDash
             }
             else
             {
-                if (CurrentTile.Down.TileContent == null) 
+                if (CurrentTile.Down.TileContent == null || CurrentTile.Down.TileContent is Rockford || CurrentTile.Down.TileContent is FireFly) 
                 {
                     return true;
                 }

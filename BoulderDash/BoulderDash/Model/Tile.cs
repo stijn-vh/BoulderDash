@@ -21,7 +21,7 @@ namespace BoulderDash
 
         public bool CanMoveOnTile(Direction direction)
         {
-            if(TileContent is Diamond)
+            if(TileContent is Diamond || TileContent is TNT)
             {
                 return true;
             }

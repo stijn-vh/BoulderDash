@@ -30,25 +30,25 @@ namespace BoulderDash.Model.Interfaces_Abstract
                 switch (dir)
                 {
                     case Direction.Up:
-                        CollectDiamond(dir);
+                        Collect(dir);
                         CurrentTile.Up.TileContent = this;
                         CurrentTile.TileContent = null;
                         CurrentTile = CurrentTile.Up;
                         break;
                     case Direction.Right:
-                        CollectDiamond(dir);
+                        Collect(dir);
                         CurrentTile.Right.TileContent = this;
                         CurrentTile.TileContent = null;
                         CurrentTile = CurrentTile.Right;
                         break;
                     case Direction.Down:
-                        CollectDiamond(dir);
+                        Collect(dir);
                         CurrentTile.Down.TileContent = this;
                         CurrentTile.TileContent = null;
                         CurrentTile = CurrentTile.Down;
                         break;
                     case Direction.Left:
-                        CollectDiamond(dir);
+                        Collect(dir);
                         CurrentTile.Left.TileContent = this;
                         CurrentTile.TileContent = null;
                         CurrentTile = CurrentTile.Left;
@@ -59,7 +59,7 @@ namespace BoulderDash.Model.Interfaces_Abstract
             }
         }
 
-        public virtual void CollectDiamond(Direction dir)
+        public virtual void Collect(Direction dir)
         {
 
         }

@@ -48,14 +48,19 @@ namespace BoulderDash.Controller
                     _maze.ExplodeAllTNT();
                 };
 
-                _maze.ExitGame();
+                if (_maze.ExitGame())
+                {
+                    System.Console.Clear();
+                    FinishGame();
+                    break;
+                }
 
                 _maze.CheckIfFireFliesDied();
 
                 if (!_maze.CheckIfPlayerIsAlive())
                 {
                     _outputView.GameOver();
-                    _outputView.PrintScore((_maze.DiamondsCollected * 10) + (_timer * 10) + (_maze.AmountOfFireFliesKilled * 250));
+                    FinishGame();
                     break;
                 }
 
@@ -65,6 +70,11 @@ namespace BoulderDash.Controller
 
             }
             System.Console.ReadLine();
+        }
+
+        public void FinishGame()
+        {
+            _outputView.PrintScore((_maze.DiamondsCollected * 10) + (_timer * 10) + (_maze.AmountOfFireFliesKilled * 250));
         }
 
         public void DoEveryTick()

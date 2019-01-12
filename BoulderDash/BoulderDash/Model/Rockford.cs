@@ -10,7 +10,7 @@ namespace BoulderDash
             return ConsoleColor.Blue;
         }
 
-        public override void CollectDiamond(Direction dir)
+        public override void Collect(Direction dir)
         {
             switch (dir)
             {
