@@ -66,7 +66,7 @@ namespace BoulderDash.Controller
 
                 _outputView.PrintMaze(_maze.FirstTile);
                 _outputView.PrintScore((_maze.DiamondsCollected * 10) + (_maze.AmountOfFireFliesKilled * 250));
-                _outputView.PrintTime(_timer);
+                _outputView.PrintTime(_timer, _tick);
 
             }
             System.Console.ReadLine();

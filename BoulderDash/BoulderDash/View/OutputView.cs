@@ -45,11 +45,11 @@ namespace BoulderDash.View
             }
         }
 
-        public void PrintTime(int time)
+        public void PrintTime(int time, int tick)
         {
             System.Console.WriteLine("");
             System.Console.ForegroundColor = System.ConsoleColor.DarkCyan;
-            System.Console.WriteLine("Time left: " + time);
+            System.Console.WriteLine("Time left: " + time + " Tick: " + tick);
         }
 
         public void PrintMaze(Tile first)
