@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BoulderDash
 {
-    public class Parser : LevelData
+    public class LevelReader : LevelData
     {
         private char[,] levelArray;
         private Tile[,] tileArray;

@@ -10,7 +10,6 @@ namespace BoulderDash
         char GetSymbol();
         ConsoleColor GetColor();
         bool Trigger(Direction dir);
-        void Move(Direction dir);
         IGameObject Fall();
         void Destroy();
         void Explode();

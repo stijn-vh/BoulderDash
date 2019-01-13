@@ -16,11 +16,6 @@ namespace BoulderDash.Model.Interfaces_Abstract
         public abstract ConsoleColor GetColor();
         public abstract char GetSymbol();
 
-        public void Move(Direction dir)
-        {
-
-        }
-
         public IGameObject Fall()
         {
             return null;

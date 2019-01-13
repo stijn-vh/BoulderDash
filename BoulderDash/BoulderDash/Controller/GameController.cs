@@ -14,10 +14,10 @@ namespace BoulderDash.Controller
         {
             _outputView = new OutputView();
             _inputView = new InputView();
-            Parser p = new Parser();
+            LevelReader p = new LevelReader();
             _maze = p.ReadFile(AskLevel());
             _outputView.PrintMaze(_maze.FirstTile);
-            WaitForMove();
+            GameCycle();
         }
 
         public int AskLevel()
@@ -25,7 +25,7 @@ namespace BoulderDash.Controller
             return _inputView.ReadLevel();
         }
 
-        public void WaitForMove()
+        public void GameCycle()
         {
             while (true)
             {
